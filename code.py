@@ -29,15 +29,15 @@ FSW3_ON_VALUE = 127
 
 # instantiate everything
 
-led1 = LED.LED(digitalio.DigitalInOut(board.LED_RED))
-led2 = LED.LED(digitalio.DigitalInOut(board.LED_GREEN))
-led3 = LED.LED(digitalio.DigitalInOut(board.LED_BLUE))
+led1 = LED.LED(digitalio.DigitalInOut(board.D0))
+led2 = LED.LED(digitalio.DigitalInOut(board.D10))
+led3 = LED.LED(digitalio.DigitalInOut(board.D9))
 
 midiOut = busio.UART(board.TX, board.RX, baudrate=31250)
 
-fsw1 = Footswitch.Footswitch(digitalio.DigitalInOut(board.D2))
-fsw2 = Footswitch.Footswitch(digitalio.DigitalInOut(board.D1))
-fsw3 = Footswitch.Footswitch(digitalio.DigitalInOut(board.D0))
+fsw1 = Footswitch.Footswitch(digitalio.DigitalInOut(board.D5))
+fsw2 = Footswitch.Footswitch(digitalio.DigitalInOut(board.D4))
+fsw3 = Footswitch.Footswitch(digitalio.DigitalInOut(board.D3))
 
 fsw1Control = MIDIControl.MIDIControl(FSW1_MIDI_CHANNEL, FSW1_CC, FSW1_OFF_VALUE, FSW1_ON_VALUE, fsw1, led1, midiOut)
 fsw2Control = MIDIControl.MIDIControl(FSW2_MIDI_CHANNEL, FSW2_CC, FSW2_OFF_VALUE, FSW2_ON_VALUE, fsw2, led2, midiOut)

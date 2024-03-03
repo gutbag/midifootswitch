@@ -10,7 +10,7 @@ class LED:
         self.off()
 
     def on(self):
-        self.pin.value = False
+        self.pin.value = True
 
     def off(self):
-        self.pin.value = True
+        self.pin.value = False
