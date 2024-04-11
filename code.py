@@ -9,6 +9,7 @@ import LED
 import Footswitch
 import MIDIControl
 import busio
+import time
 
 # The MIDI parameters for each footswitch can be changed here
 
@@ -42,6 +43,27 @@ fsw3 = Footswitch.Footswitch(digitalio.DigitalInOut(board.D3))
 fsw1Control = MIDIControl.MIDIControl(FSW1_MIDI_CHANNEL, FSW1_CC, FSW1_OFF_VALUE, FSW1_ON_VALUE, fsw1, led1, midiOut)
 fsw2Control = MIDIControl.MIDIControl(FSW2_MIDI_CHANNEL, FSW2_CC, FSW2_OFF_VALUE, FSW2_ON_VALUE, fsw2, led2, midiOut)
 fsw3Control = MIDIControl.MIDIControl(FSW3_MIDI_CHANNEL, FSW3_CC, FSW3_OFF_VALUE, FSW3_ON_VALUE, fsw3, led3, midiOut)
+
+# flash LEDs to confirm power
+led1.on()
+led2.on()
+led3.on()
+time.sleep(2)
+led1.off()
+led2.off()
+led3.off()
+
+# a bit more flashing
+for i in range(3/0.3):
+    led1.on()
+    time.sleep(0.1)
+    led1.off()
+    led2.on()
+    time.sleep(0.1)
+    led2.off()
+    led3.on()
+    time.sleep(0.1)
+    led3.off()
 
 # loop forever, servicing footswitch state changes
 while True:
